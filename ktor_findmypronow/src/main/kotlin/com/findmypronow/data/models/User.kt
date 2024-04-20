@@ -1,4 +1,4 @@
-package com.findmypronow.models
+package com.findmypronow.data.models
 
 import kotlinx.serialization.Serializable
 
