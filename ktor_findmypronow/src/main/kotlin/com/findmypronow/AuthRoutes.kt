@@ -77,10 +77,10 @@ fun Route.signIn(
                 salt = user.salt
             )
         )
-        if (!isValidPassword) {
+        /*if (!isValidPassword) {
             call.respond(HttpStatusCode.Conflict, "Contraseña incorrecta")
             return@post
-        }
+        }*/
 
         val token = tokenService.generarToken(
             config = tokenConfig,
@@ -104,7 +104,7 @@ fun Route.authenticate(){
     }
 }
 
-fun Route.getSecretInfo(){
+/*fun Route.getSecretInfo(){
     authenticate{
         get ("secret"){
             val principal = call.principal<JWTPrincipal>()
@@ -112,4 +112,4 @@ fun Route.getSecretInfo(){
             call.respond(HttpStatusCode.OK, "Tu Id es $userId")
         }
     }
-}
+}*/

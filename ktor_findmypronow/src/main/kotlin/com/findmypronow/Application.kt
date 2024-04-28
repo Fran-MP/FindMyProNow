@@ -1,39 +1,28 @@
 package com.findmypronow
 
-
 import com.findmypronow.data.getDatabase
 import com.findmypronow.data.user.MongoUserDataSource
-import com.findmypronow.data.user.User
+import com.findmypronow.di.mainModule
 import com.findmypronow.plugins.*
 import com.findmypronow.security.hashing.HashingService_SHA256
 import com.findmypronow.security.token.JwtTokenService
 import com.findmypronow.security.token.TokenConfig
 import io.ktor.server.application.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import org.koin.ktor.plugin.Koin
 
 
-fun main() {
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
-    val database = getDatabase()
-
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
-
-            .start(wait = true)
-    }
-
+@Suppress("unused")
 fun Application.module() {
-
+    install(Koin) {
+        modules(mainModule)
+    }
     val database = getDatabase()
-
-
-
-
 
     val userDataSource = MongoUserDataSource(database)
-    GlobalScope.launch {
+
+    /*GlobalScope.launch {
         val user = User(
             username = "admin",
             password = "admin",
@@ -48,10 +37,9 @@ fun Application.module() {
             //email = "franjmpereira@gmail.com"
         )
         userDataSource.insertUser(user)
-    }
+    }*/
 
-
-    val tokenService= JwtTokenService()
+    val tokenService = JwtTokenService()
     val tokenConfig = TokenConfig(
         issuer = environment.config.property("jwt.issuer").getString(),
         audience = environment.config.property("jwt.audience").getString(),
@@ -60,11 +48,10 @@ fun Application.module() {
     )
     val hashingService = HashingService_SHA256()
 
-
-    configureRouting(userDataSource,hashingService,tokenConfig,tokenService)
     configureSockets()
+    configureSessions()
+    configureRouting(userDataSource, hashingService, tokenConfig, tokenService)
     configureSerialization()
     configureMonitoring()
     configureSecurity(tokenConfig)
-
 }
