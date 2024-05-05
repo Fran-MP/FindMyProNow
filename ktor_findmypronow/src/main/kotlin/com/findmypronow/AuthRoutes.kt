@@ -3,8 +3,8 @@ package com.findmypronow
 
 import com.findmypronow.data.requests.AuthRequest
 import com.findmypronow.data.responses.AuthResponse
-import com.findmypronow.data.user.User
-import com.findmypronow.data.user.UserDataSource
+import com.findmypronow.data.model.User
+import com.findmypronow.data.model.UserDataSource
 import com.findmypronow.security.hashing.HashingService
 import com.findmypronow.security.hashing.SecurityHash
 
@@ -13,8 +13,6 @@ import com.findmypronow.security.token.TokenConfig
 import com.findmypronow.security.token.TokenService
 import io.ktor.http.*
 import io.ktor.server.application.*
-import io.ktor.server.auth.*
-import io.ktor.server.auth.jwt.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*

@@ -1,7 +1,7 @@
 package com.findmypronow
 
 import com.findmypronow.data.getDatabase
-import com.findmypronow.data.user.MongoUserDataSource
+import com.findmypronow.data.model.MongoUserDataSourceImpl
 import com.findmypronow.di.mainModule
 import com.findmypronow.plugins.*
 import com.findmypronow.security.hashing.HashingService_SHA256
@@ -20,7 +20,7 @@ fun Application.module() {
     }
     val database = getDatabase()
 
-    val userDataSource = MongoUserDataSource(database)
+    val userDataSource = MongoUserDataSourceImpl(database)
 
     /*GlobalScope.launch {
         val user = User(

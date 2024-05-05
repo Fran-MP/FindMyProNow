@@ -2,11 +2,10 @@ package com.findmypronow.plugins
 
 
 import com.findmypronow.authenticate
-import com.findmypronow.data.user.UserDataSource
+import com.findmypronow.data.model.UserDataSource
 import com.findmypronow.room.RoomController
 import com.findmypronow.routes.chatSocket
 import com.findmypronow.routes.getAllMessages
-//import com.findmypronow.getSecretInfo
 import com.findmypronow.security.hashing.HashingService
 import com.findmypronow.security.token.TokenConfig
 import com.findmypronow.security.token.TokenService
@@ -29,6 +28,5 @@ fun Application.configureRouting(
         signIn(tokenService,tokenConfig,hashingService,userDataSource)
         signUp(hashingService,userDataSource)
         authenticate()
-        //getSecretInfo()
     }
 }

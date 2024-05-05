@@ -28,4 +28,6 @@ fun Application.configureSecurity(config:TokenConfig) {
             }
         }
     }
+
+
 }

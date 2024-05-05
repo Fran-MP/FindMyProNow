@@ -1,4 +1,4 @@
-package com.findmypronow.data.user
+package com.findmypronow.data.model
 
 import kotlinx.serialization.Serializable
 import org.bson.codecs.pojo.annotations.BsonId

@@ -1,5 +1,5 @@
-import com.findmypronow.data.user.Message
-import com.findmypronow.data.user.MessageDataSource
+import com.findmypronow.data.model.Message
+import com.findmypronow.data.model.MessageDataSource
 import com.mongodb.internal.client.model.FindOptions
 import com.mongodb.kotlin.client.coroutine.MongoDatabase
 import kotlinx.coroutines.flow.toList

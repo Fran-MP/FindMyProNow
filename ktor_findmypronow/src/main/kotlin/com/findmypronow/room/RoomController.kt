@@ -1,7 +1,7 @@
 package com.findmypronow.room
 
-import com.findmypronow.data.user.Message
-import com.findmypronow.data.user.MessageDataSource
+import com.findmypronow.data.model.Message
+import com.findmypronow.data.model.MessageDataSource
 import io.ktor.websocket.*
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

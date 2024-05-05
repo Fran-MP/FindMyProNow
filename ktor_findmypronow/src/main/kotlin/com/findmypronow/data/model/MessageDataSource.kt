@@ -1,6 +1,4 @@
-package com.findmypronow.data.user
-
-import org.bson.Document
+package com.findmypronow.data.model
 
 interface MessageDataSource {
     suspend fun getAllMessages(): List<Message>
