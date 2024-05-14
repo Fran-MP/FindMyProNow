@@ -13,7 +13,7 @@ data class User(
     //val name: String?,
     //val lastName: String?,
     //val phone: String?,
-    //val email: String?,
+    val email: String?,
     //val address: String?,
     val password: String,
     //val role: String?,

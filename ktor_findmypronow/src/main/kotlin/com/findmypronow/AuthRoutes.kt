@@ -37,6 +37,7 @@ fun Route.signUp(
         val securityHash = hashingService.generateSecurityHash(request.password)
         val user = User(
             username = request.username,
+            email = request.email,
             password = securityHash.hash,
             salt = securityHash.salt
         )
